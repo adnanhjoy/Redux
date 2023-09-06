@@ -9,12 +9,12 @@ const flightReducer = (state = initialState, action) => {
         case ADDBOOKING:
             return {
                 ...state,
-                value: state.value.push(action.payload)
+                value: [...state.value, action.payload]
             }
         case CANCELBOOKING:
             return {
                 ...state,
-                value: state.value.pop(action.payload)
+                value: state.value.filter(flight => flight !== action.payload)
             }
         default:
             return state

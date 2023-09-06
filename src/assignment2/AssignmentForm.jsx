@@ -1,22 +1,33 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBooking } from '../redux/bookingFlight/actions';
 
 const AssignmentForm = () => {
+    const flightBooking = useSelector(state => state.value);
+    const dispatch = useDispatch();
+    let id = 0;
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
+        id = id + 1;
         const from = form.from.value;
         const to = form.to.value;
         const date = form.date.value;
         const guests = form.guests.value;
         const ticketClass = form.ticketClass.value;
         const data = {
+            id,
             from,
             to,
             date,
             guests,
             ticketClass
         }
-        console.log(data)
+        if (flightBooking?.length > 2) {
+            alert('Your allmost select 3 flight');
+        } else {
+            dispatch(addBooking(data))
+        }
     }
 
     return (
@@ -86,8 +97,8 @@ const AssignmentForm = () => {
             </div>
 
             <button className="addCity" type="submit" id="lws-addCity">
-                <svg width="15px" height="15px" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                <svg width="15px" height="15px" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
                 <span className="text-sm">Book</span>
             </button>
