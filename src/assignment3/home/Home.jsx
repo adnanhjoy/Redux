@@ -4,7 +4,7 @@ import ProductsForm from '../component/ProductsForm';
 import ProductCard from '../component/ProductCard';
 
 const Home = () => {
-    const products = useSelector(state => state.products);
+    const products = useSelector(state => state.pro.products);
     return (
         <div>
             <main className="py-16">
