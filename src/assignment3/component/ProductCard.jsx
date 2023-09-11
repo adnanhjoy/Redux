@@ -1,13 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addedCart } from '../../redux/cart/actions';
+import { addedCart, increment } from '../../redux/cart/actions';
 
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
-    const { title, image, category, price, quantity } = product || {};
+    let { title, image, category, price, quantity } = product || {};
 
     const handleAddCart = () => {
         dispatch(addedCart(product));
+        dispatch(increment())
+
     }
     return (
         <div className="lws-productCard">

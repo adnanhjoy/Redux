@@ -3,7 +3,7 @@ import './Style.css'
 import CartComponet from '../component/CartComponet';
 import { useSelector } from 'react-redux';
 const Cart = () => {
-    const products = useSelector(state => state.car.cart);
+    const products = useSelector(state => state.car.carts);
     
     return (
         <div>

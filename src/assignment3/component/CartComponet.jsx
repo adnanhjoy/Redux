@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const CartComponet = ({ product }) => {
+    const cartQty = useSelector(state => state.car.qty);
     const { title, image, category, price, quantity } = product || {};
-
+    console.log(cartQty)
     return (
         <div className="cartCard">
             <div className="flex items-center col-span-6 space-x-6">
@@ -21,7 +23,7 @@ const CartComponet = ({ product }) => {
                     <button className="lws-incrementQuantity">
                         <i className="text-lg fa-solid fa-plus"></i>
                     </button>
-                    <span className="lws-cartQuantity">2</span>
+                    <span className="lws-cartQuantity">{cartQty}</span>
                     <button className="lws-decrementQuantity">
                         <i className="text-lg fa-solid fa-minus"></i>
                     </button>
